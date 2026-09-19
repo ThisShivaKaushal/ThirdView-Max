@@ -1,0 +1,76 @@
+:root {
+    --white: #ffffff;
+    --darkcyan: #0a9396;
+    --skin: #e9d8a6;
+    --lightcyan: #94d2bd;
+    --red: #ff3a3a;
+    --lightgray: #cccccc;
+    --charcoal: #0f0f0f;
+    --blue: #1c62b9;
+    --dimgray: #606060;
+    --ghostwhite: #f9f9f9;
+    --gray: #999999;
+    --rose: #ffcdd2;
+    --font: Roboto, Arial, sans-serif;
+    --tint: #fff4f4;
+    --cream: #fafafa;
+    --greycream: #eeeeee;
+    --smokewhite: #f2f2f2;
+    --black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--darkcyan);
+    color: var(--white);
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 16px;
+    background: rgba(147, 210, 189, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.warning {
+    background: var(--red);
+    border: 1px solid red;
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.download .uploadpart {
+    background: var(--skin);
+    border: 1px solid var(--ghostwhite);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    color: var(--black);
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThirdView Max</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>ThirdView Max</h1>
+    </header>
+
+    <main>
+
+        <div id="mobilewarning" class="warning hidden">
+            Heads up! on phones, videos over 10 minutes can get slow. Shorter clips work best for now.
+        </div>
+
+        <div id="downloadbox" class="download hidden">
+            <p id="downloadtext">Loading the Model...</p>
+            <div class="bar">
+                <div id="downloadbar"></div>
+            </div>
+        </div>
+
+        <div class="layout">
+            <div class="left">
+                <div class="uploadpart">
+                    <video id="player" class="hidden" controls></video>
+                    <label id="uploadlabel" for="file-input">
+                        <p><strong>Click to upload a video</strong></p>
+                        <span class="small">Any format, up to ~1 hour</span>
+                    </label>
+                    <input type="file" id="fileInput" accept="video/*" hidden />
+                    <button id="samplebutton" class="sample" type="button">Or try it with a sample video (1
+                        min)</button>
+
+                </div>
+            </div>
+    </main>
+
+</body>
+
+</html>
