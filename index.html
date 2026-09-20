@@ -27,7 +27,7 @@
         </div>
 
         <div class="layout">
-            <div class="left">
+            <div class="upload">
                 <div class="uploadpart">
                     <video id="player" class="hidden" controls></video>
                     <label id="uploadlabel" for="file-input">
@@ -37,10 +37,47 @@
                     <input type="file" id="fileInput" accept="video/*" hidden />
                     <button id="samplebutton" class="sample" type="button">Or try it with a sample video (1
                         min)</button>
+                </div>
+                <div class="searchpanel">
+                    <div class="searchbar">
+                        <input type="text" id="searchbox" placeholder="e.g. bridge in mr beast's squid game video"
+                            disabled />
+                        <button id="searchbutton" disabled type="button">Search</button>
+                    </div>
+                </div>
 
+                <div id="quicktrybutton" class="quicktries hidden">
+                    <span class="small">try;</span>
+                    <button type="buttton" class="quicktry">The bridge in MrBeast's squid Game Video</button>
+                    <button type="buttton" class="quicktry">When the first girl gets shooted</button>
+                    <button type="buttton" class="quicktry">Jimmy said "Four hundred fifty six grand"</button>
+                    <button type="buttton" class="quicktry">When 438 player remaining</button>
+                </div>
+
+                <p class="small tagexplain">
+                    Type <code>@visual</code> for an Eyewitness search, <code>@vocal</code> for an Earwitness search.
+                    Leave both out and it figure out which one you meant.
+                </p>
+                <p id="status"></p>
+            </div>
+
+            <div id="result">
+                <div class="result-part">
+                    <div class="horizontal space-between">
+                        <h2>Results</h2>
+                        <span id="resultcount" class="small"></span>
+                    </div>
+                    <div id="results">
+                        <p class="small">Upload a video, then search for something to see the matching frames here.</p>
+
+                    </div>
                 </div>
             </div>
     </main>
+
+    <canvas id="canvas" width="224" height="224" hidden></canvas>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="extra.js"></script>
 
 </body>
 
