@@ -1,23 +1,22 @@
-export function parseOuery(rawtext) {
+export function parseQuery(rawtext) {
     const hasvisualtag = /@visual\b/i.test(rawtext);
     const hasvocaltag = /@vocal\b/i.test(rawtext);
 
     const cleantext = rawtext
         .replace(/@visual\b/gi, '')
         .replace(/@vocal\b/gi, '')
-        .replace(/\s+/g, '')
+        .replace(/\s+/g, ' ')
         .trim();
 
     let mode;
-    if (hasvisualtag && hasvisualtag) {
+    if (hasvisualtag && hasvocaltag) {
         mode = 'both';
     } else if (hasvisualtag) {
         mode = 'visual';
     } else if (hasvocaltag) {
-        mode = 'vocal'
+        mode = 'vocal';
     } else {
-
-        mode = soundsklikespeech(cleantext) ? 'vocal' : 'both';
+        mode = soundslikespeech(cleantext) ? 'vocal' : 'both';
     }
     return { mode, text: cleantext };
 }

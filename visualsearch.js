@@ -1,4 +1,4 @@
-import { pipeline } from 'https://cdm.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
 
 let clipmodel = null;
 
@@ -12,7 +12,6 @@ export async function getclipmodel(progresscallback) {
     return clipmodel;
 }
 
-
 export function grabFrames(videoEl, canvas, ctx, step) {
     return new Promise((resolve) => {
         const framelist = [];
@@ -21,7 +20,7 @@ export function grabFrames(videoEl, canvas, ctx, step) {
         const capture = (time) => {
             try {
                 ctx.drawImage(videoEl, 0, 0, 224, 224);
-                frameList.push({ time, img: canvas.toDataURL('image/jpeg', 0.8) });
+                framelist.push({ time, img: canvas.toDataURL('image/jpeg', 0.8) });
             } catch (err) {
                 console.warn('Skipping a frame, canvas got tainted:', err);
             }
@@ -43,14 +42,13 @@ export function grabFrames(videoEl, canvas, ctx, step) {
             if (time < videoEl.duration) {
                 videoEl.currentTime = time;
             } else {
-                resolve(framelist)
+                resolve(framelist);
             }
         };
 
         videoEl.currentTime = time;
     });
 }
-
 
 export async function searchFrames(framelist, query, onProgress) {
     const scored = [];
@@ -59,7 +57,6 @@ export async function searchFrames(framelist, query, onProgress) {
         const frame = framelist[i];
         const output = await clipmodel(frame.img, [query, 'something else']);
         const match = output.find((o) => o.label === query);
-
 
         scored.push({ time: frame.time, img: frame.img, score: match ? match.score : 0 });
 

@@ -1,4 +1,4 @@
-import { pipelines } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
 
 let speechmodel = null;
 let cachedtranscript = null;
@@ -7,7 +7,7 @@ let cachedsrc = null;
 export async function getspeechmodel(progresscallback) {
     if (speechmodel !== null) return speechmodel;
 
-    speechmodel = await pipelines('automatic-speech-recognition', 'Xenova/whisper-tiny.en', {
+    speechmodel = await pipeline('automatic-speech-recognition', 'Xenova/whisper-tiny.en', {
         progress_callback: progresscallback
     });
 
@@ -33,7 +33,7 @@ async function getaudiosample(src) {
     return rendered.getChannelData(0);
 }
 
-export async function transcribeVideo(src, progressCallback, statusCallback) {
+export async function transcribevideo(src, progressCallback, statusCallback) {
     if (cachedtranscript !== null && cachedsrc === src) {
         return cachedtranscript;
     }
@@ -55,7 +55,6 @@ export async function transcribeVideo(src, progressCallback, statusCallback) {
     cachedtranscript = output.chunks || [];
     cachedsrc = src;
     return cachedtranscript;
-
 }
 
 export function searchtranscript(chunks, query) {
@@ -78,7 +77,7 @@ export function searchtranscript(chunks, query) {
         if (hitcount > 0) {
             matches.push({
                 time: chunk.timestamp[0],
-                text: chunk.text.text.trim(),
+                text: chunk.text.trim(),
                 score: hitcount / querywords.length
             });
         }
